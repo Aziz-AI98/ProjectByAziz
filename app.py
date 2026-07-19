@@ -38,4 +38,6 @@ with gr.Blocks() as demo:
     submit_btn = gr.Button("تحليل النص")
     submit_btn.click(fn=predict_stress, inputs=input_text, outputs=output_text)
 
-demo.launch()
+import os
+port = int(os.environ.get("PORT", 7860))
+demo.launch(server_name="0.0.0.0", server_port=port)
